@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!-- script to trigger the overlay on page show, can be activated manually for testing via a button -->
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+body {
+font-family: Syne;
+}
+
+* {
+box-sizing: border-box;
+}
+
+.overlay {
+height: 100%;
+width: 100%;
+display: none;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: #35333b;
+}
+
+.overlay-content {
+position: relative;
+top: 46%;
+width: 60%;
+text-align: center;
+margin-top: 30px;
+margin: auto;
+}
+
+.overlay .closebtn {
+position: absolute;
+top: 20px;
+right: 45px;
+font-size: 60px;
+cursor: pointer;
+color: white;
+}
+
+.overlay .closebtn:hover {
+color: #e39600;
+}
+
+input[type=password] {
+width: 400px;
+max-width: 80%;
+height: 45px;
+font-size: 20px;
+padding: 12px;
+border-radius: 6px;
+border: none;
+margin-bottom: 20px;
+font-family: Syne;
+}
+
+.overlay button {
+background-color: #E39600;
+border: none;
+color: white;
+padding: 14px 32px;
+border-radius: 40px;
+font-size: 24px;
+font-family: Syne;
+font-weight: 600;
+transition-duration: 0.25s;
+}
+.overlay button:hover {
+background-color: #6D7AF2;
+border: none;
+color: white;
+padding: 14px 32px;
+border-radius: 40px;
+font-size: 24px;
+font-family: Syne;
+font-weight: 600;
+cursor: pointer;
+}
+
+</style>
+</head>
+<body onpageshow="promptPassword()">
+
+<div id="lockScreenOverlay" class="overlay">
+<span class="closebtn" onclick="history.back()" title="Go back"><i class="fa fa-angle-left" aria hidden="true"></i>
+</span>
+<div class="overlay-content">
+<form id="accessForm">
+<input type="password" id="pswdInput" placeholder="Enter password">
+<br><button onclick="accessPage()">Access</button>
+
+</form>
+</div>
+</div>
+
+<!-- promptPassword / open overlay script -->
+<script>
+function promptPassword() {
+document.getElementById("lockScreenOverlay").style.display = "block";
+}
+</script>
+
+<!-- password validation script -->
+<script>
+function accessPage() {
+let inputPswd = document.getElementById("pswdInput")
+.value;
+let correctPswd = "mlanson.demo";
+if (inputPswd === correctPswd) {
+document.getElementById("lockScreenOverlay").style.display = "none";
+}
+else {
+alert("Incorrect password!");
+}
+}
+</script>
+</body>
+</html>
