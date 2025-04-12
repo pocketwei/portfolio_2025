@@ -8,7 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
 </style>
 </head>
-<body onpageshow="promptPassword()">
+<body>
 
 <div id="lockScreenOverlay" class="overlay">
 <span class="closebtn" onclick="history.back()" title="Go back"><i class="fa fa-angle-left" aria hidden="true"></i>
@@ -21,13 +21,6 @@
 </form>
 </div>
 </div>
-
-<!-- promptPassword / open overlay script -->
-<script>
-function promptPassword() {
-document.getElementById("lockScreenOverlay").style.display = "block";
-}
-</script>
 
 <!-- password validation script -->
 <script>
