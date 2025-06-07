@@ -3,26 +3,31 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="pwoverlay.css">
+  <link rel="stylesheet" href="https://github.com/pocketwei/portfolio_2025/blob/145e796a567e5a00d5fba57b4811e7a47dc7dc5b/overlay-style.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
 </style>
 </head>
-<body>
-
+<body onhashchange= promptPassword();>
 <div id="lockScreenOverlay" class="overlay">
 <span class="closebtn" onclick="history.back()" title="Go back"><i class="fa fa-angle-left" aria hidden="true"></i>
 </span>
 <div class="overlay-content">
 <form id="accessForm">
 <input type="password" id="pswdInput" placeholder="Enter password">
-<br><button onclick="accessPage()">Access</button>
-
 </form>
+<br><button onclick="accessPage()">Access</button>
 </div>
 </div>
+<script>
+function promptPassword() {
+let protectedSections = ["#ubisoft-2025", "#space-evaders-2024", "#celio-2023"];
+if (protectedSections.includes(location.hash)) {
+document.getElementById("lockScreenOverlay").style.display = "block";
+}
+}
+</script>
 
-<!-- password validation script -->
 <script>
 function accessPage() {
 let inputPswd = document.getElementById("pswdInput")
